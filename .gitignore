@@ -1,0 +1,17 @@
+# ignore linker scripts:
+*.ld
+*.lds
+
+# ignore compiled binary files and intermediate files produced during compilation:
+*.out
+*.d
+*.o
+*.s
+*.hex
+*.elf
+*.map
+
+# ignore everything in the build/ folder:
+build/*
+
+# ignore particular source files:
