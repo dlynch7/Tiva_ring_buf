@@ -1,6 +1,8 @@
 # Tiva_ring_buf
 Example ring buffer application for Tiva microcontroller
 
+This README has two sections: [Usage](#usage) and [Theory](#theory-ring-buffers-in-real-time-control-applications).
+
 ## Usage
 ### Building and flashing the program
 You can build this project using Make or using TI's Code Composer Studio (CCS).
