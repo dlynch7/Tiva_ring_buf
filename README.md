@@ -69,12 +69,14 @@ Enter the ring buffer: the control loop can write to the ring buffer at the cont
 
 ### Water tank analogy
 As long as the buffer is "big enough", the whole system can run smoothly for some period of time.
-This is just like those water tank problems from high school or freshman physics: data is "flowing" into the buffer at one rate and "flowing out of the buffer at a different (slower) rate.
+This is just like those water tank problems from high school or freshman physics: data is "flowing" into the buffer at one rate and "flowing" out of the buffer at a different (slower) rate.
 Unless the buffer is infinitely large, it will eventually fill up, and new data from the control loop will be lost (imagine water spilling out of the tank).
 When will this happen? It depends on the size of the buffer and the data "flow" rates.
 The upper limit to your buffer size depends on the data types you are buffering and how much memory your microcontroller has available.
 
-### What makes this ring buffer implementation so special?
+### What makes this ring buffer implementation special?
+Nothing, really. It just saves you from having to write a lot of code.
+
 Suppose your controller requires several different data types:
 * your incremental rotary encoder records angles using the `uint16_t` type
 * your motor amplifier accepts current commands in the `int32_t` type
@@ -109,8 +111,9 @@ typdef struct{
 } control_data_buffer_t
 ```
 
-This is exactly what is implemented in this project's `ring_buffer.{c,h}`.
-In a fit of excess, I also buffered the write and read indices so you can see how they change as data is written to and read from the buffer.
+This is exactly what is implemented in this project, in `ring_buffer.{c,h}`.
+In a fit of excess, I also buffered the write and read indices so you can see how they change as data is written to and read from the buffer;
+this is helpful for debugging but certainly not essential.
 
 To modify my ring buffer implementation to suit your needs,
 * edit `typedef struct {...} buffer_t` and `typedef struct {...} buf_out_t` in `ring_buffer.h`,
